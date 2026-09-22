@@ -89,3 +89,5 @@ Ten kod celowo skupia się na działaniu, nie na wyglądzie — wróćmy
 teraz do szaty graficznej i dopracujmy detale. Warto też pomyśleć o
 kolejnych funkcjach: wiadomości między użytkownikami, edycja/usuwanie
 własnych ogłoszeń z poziomu strony, wyszukiwanie i filtrowanie.
+
+
