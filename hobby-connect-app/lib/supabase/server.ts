@@ -15,12 +15,13 @@ export async function createClient() {
         getAll() {
           return cookieStore.getAll();
         },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            );
-          } catch {
+       setAll(
+  cookiesToSet: {
+    name: string;
+    value: string;
+    options: CookieOptions;
+  }[],
+) {
             // setAll wywołane z Server Component, gdzie nie można ustawiać
             // ciasteczek — middleware.ts i tak odświeży sesję.
           }
