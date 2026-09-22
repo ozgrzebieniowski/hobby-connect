@@ -2,8 +2,14 @@ import {
   createServerClient,
   type CookieOptions,
 } from "@supabase/ssr";
-// Tworzymy nowego klienta przy KAŻDYM wywołaniu (nigdy na poziomie modułu),
-// żeby uniknąć serwowania nieaktualnych ciasteczek sesji.
+import { cookies } from "next/headers";
+
+type CookieToSet = {
+  name: string;
+  value: string;
+  options: CookieOptions;
+};
+
 export async function createClient() {
   const cookieStore = await cookies();
 
@@ -15,18 +21,18 @@ export async function createClient() {
         getAll() {
           return cookieStore.getAll();
         },
-       setAll(
-  cookiesToSet: {
-    name: string;
-    value: string;
-    options: CookieOptions;
-  }[],
-) {
-            // setAll wywołane z Server Component, gdzie nie można ustawiać
-            // ciasteczek — middleware.ts i tak odświeży sesję.
+
+        setAll(cookiesToSet: CookieToSet[]) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
+          } catch {
+            // W Server Components nie można ustawiać ciasteczek.
+            // Obsługę odświeżania sesji wykonuje middleware.ts.
           }
         },
       },
-    }
+    },
   );
 }
