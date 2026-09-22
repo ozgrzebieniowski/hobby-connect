@@ -1,0 +1,21 @@
+{
+  "name": "Hobby Connect",
+  "short_name": "Hobby Connect",
+  "description": "Znajdź ludzi, którzy podzielają Twoją pasję.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F1EDE1",
+  "theme_color": "#33502E",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
