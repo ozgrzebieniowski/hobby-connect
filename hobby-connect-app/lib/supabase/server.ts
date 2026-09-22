@@ -1,6 +1,7 @@
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
-
+import {
+  createServerClient,
+  type CookieOptions,
+} from "@supabase/ssr";
 // Tworzymy nowego klienta przy KAŻDYM wywołaniu (nigdy na poziomie modułu),
 // żeby uniknąć serwowania nieaktualnych ciasteczek sesji.
 export async function createClient() {
